@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta property="og:title" content="빌리지 할인 안내">
+<meta property="og:description" content="학생 30% · 사업자 20% · 장기 최대 50% · 쿠폰 · 소개 리워드 — 전부 중복 적용">
+<meta property="og:type" content="website">
+<title>빌리지 할인 안내</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{background:#0a0a0f;color:#e8e6e3;font-family:'Noto Sans KR',sans-serif;max-width:520px;margin:0 auto;padding-bottom:40px}
+.mono{font-family:'JetBrains Mono',monospace}
+
+/* Hero */
+.hero{padding:48px 24px 32px;text-align:center;border-bottom:1px solid #1a1a24}
+.hero-logo{font-size:11px;color:#f97316;letter-spacing:5px;font-weight:500}
+.hero-title{font-size:28px;font-weight:900;margin-top:12px;letter-spacing:-0.5px;line-height:1.3}
+.hero-title span{color:#f97316}
+.hero-sub{font-size:13px;color:#666;margin-top:8px}
+.hero-badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px}
+.badge{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600}
+.badge-orange{background:rgba(249,115,22,0.12);border:1px solid rgba(249,115,22,0.3);color:#f97316}
+.badge-blue{background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25);color:#3b82f6}
+.badge-green{background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.25);color:#22c55e}
+.badge-purple{background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.25);color:#a855f7}
+
+/* Section */
+.section{padding:28px 24px;border-bottom:1px solid #1a1a24}
+.section:last-of-type{border-bottom:none}
+.section-num{font-size:11px;letter-spacing:3px;font-weight:500;margin-bottom:8px}
+.section-title{font-size:22px;font-weight:900;margin-bottom:4px}
+.section-sub{font-size:13px;color:#666;margin-bottom:20px}
+.num-orange{color:#f97316}
+.num-blue{color:#3b82f6}
+.num-green{color:#22c55e}
+.num-purple{color:#a855f7}
+
+/* Stat Cards */
+.stat-row{display:flex;gap:10px;margin-bottom:12px}
+.stat-card{flex:1;background:#13131a;border:1px solid #1e1e2a;border-radius:12px;padding:16px;text-align:center}
+.stat-label{font-size:12px;color:#888;margin-bottom:4px}
+.stat-value{font-size:32px;font-weight:900;font-family:'JetBrains Mono',monospace;letter-spacing:-1px}
+.stat-note{font-size:11px;color:#555;margin-top:4px}
+
+/* Info Box */
+.info-box{background:#13131a;border:1px solid #1e1e2a;border-radius:12px;padding:16px;margin-bottom:12px}
+.info-item{display:flex;align-items:center;gap:8px;font-size:13px;color:#999;padding:6px 0}
+.check{color:#22c55e;font-size:14px}
+
+/* Accent Box */
+.accent-box{border-radius:10px;padding:14px 16px;margin-bottom:12px;font-size:13px}
+.accent-orange{background:rgba(249,115,22,0.06);border:1px solid rgba(249,115,22,0.15);color:#f97316}
+.accent-blue{background:rgba(59,130,246,0.06);border:1px solid rgba(59,130,246,0.15);color:#3b82f6}
+.accent-green{background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.15);color:#22c55e}
+.accent-purple{background:rgba(168,85,247,0.06);border:1px solid rgba(168,85,247,0.15);color:#a855f7}
+.accent-title{font-weight:700;font-size:14px;margin-bottom:4px}
+.accent-desc{color:#888;font-size:12px}
+
+/* Example Calc */
+.calc-example{background:#13131a;border:1px solid #1e1e2a;border-radius:12px;padding:16px;margin-bottom:10px}
+.calc-label{font-size:12px;color:#888;margin-bottom:8px}
+.calc-flow{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:13px}
+.calc-tag{padding:3px 8px;border-radius:4px;font-size:11px}
+.tag-orange{background:rgba(249,115,22,0.12);color:#f97316}
+.tag-blue{background:rgba(59,130,246,0.1);color:#3b82f6}
+.tag-green{background:rgba(34,197,94,0.1);color:#22c55e}
+.calc-result{font-size:24px;font-weight:900;color:#f97316;font-family:'JetBrains Mono',monospace;margin-top:8px}
+.calc-original{color:#555;text-decoration:line-through;font-family:'JetBrains Mono',monospace;font-size:14px}
+.calc-pct{color:#22c55e;font-size:13px;font-weight:700;font-family:'JetBrains Mono',monospace}
+
+/* Long Term Table */
+.lt-table{width:100%;font-size:13px;border-collapse:collapse}
+.lt-table td{padding:10px 12px;border-bottom:1px solid #1a1a24}
+.lt-table td:first-child{color:#999}
+.lt-table td:last-child{text-align:right;font-family:'JetBrains Mono',monospace;color:#f97316;font-weight:700}
+
+/* Calculator Section */
+.calc-section{padding:28px 24px}
+.cat-tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;-ms-overflow-style:none}
+.cat-tabs::-webkit-scrollbar{display:none}
+.cat-tab{padding:8px 14px;border-radius:8px;border:1px solid #222;background:#161620;font-size:12px;color:#888;cursor:pointer;white-space:nowrap;transition:all .2s;font-family:'Noto Sans KR',sans-serif}
+.cat-tab.active{background:#f97316;border-color:#f97316;color:#000;font-weight:600}
+.select-wrap{position:relative;margin-top:10px}
+.custom-select{width:100%;padding:12px 14px;padding-right:36px;background:#161620;border:1px solid #222;border-radius:10px;color:#e8e6e3;font-size:13px;font-family:'Noto Sans KR',sans-serif;appearance:none;-webkit-appearance:none;cursor:pointer}
+.custom-select:focus{outline:none;border-color:#f97316}
+.select-arrow{position:absolute;right:12px;top:50%;transform:translateY(-50%);color:#555;font-size:11px;pointer-events:none}
+.chip-group{display:flex;flex-wrap:wrap;gap:6px}
+.chip{padding:8px 12px;border-radius:8px;border:1px solid #222;background:#161620;font-size:12px;color:#888;cursor:pointer;transition:all .2s;font-family:'Noto Sans KR',sans-serif;user-select:none}
+.chip:active{transform:scale(0.96)}
+.chip.active{background:rgba(249,115,22,0.15);border-color:#f97316;color:#f97316;font-weight:500}
+.chip.exclusive.active{background:rgba(59,130,246,0.1);border-color:#3b82f6;color:#3b82f6}
+.chip-hint{font-size:11px;color:#444;margin-top:6px;margin-bottom:4px}
+.result-card{background:linear-gradient(145deg,#1a1510,#161620);border:1px solid #2a2010;border-radius:14px;padding:20px;text-align:center;margin-top:16px;position:relative;overflow:hidden;min-height:80px}
+.result-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#f97316,transparent)}
+.result-empty{color:#444;font-size:13px;padding:16px 0}
+.result-equip{font-size:12px;color:#888;margin-bottom:4px}
+.result-original{font-size:15px;color:#555;text-decoration:line-through;font-family:'JetBrains Mono',monospace}
+.result-final{font-size:36px;font-weight:900;color:#f97316;font-family:'JetBrains Mono',monospace;letter-spacing:-2px;margin:4px 0}
+.result-discount{display:inline-block;background:rgba(34,197,94,0.1);color:#22c55e;padding:3px 10px;border-radius:16px;font-size:13px;font-weight:700;font-family:'JetBrains Mono',monospace}
+.result-formula{font-size:10px;color:#444;margin-top:8px;font-family:'JetBrains Mono',monospace}
+.result-savings{margin-top:10px;padding-top:10px;border-top:1px solid #222;font-size:12px;color:#888}
+.result-savings strong{color:#22c55e;font-family:'JetBrains Mono'}
+.s-label{font-size:11px;color:#555;margin-bottom:6px;margin-top:16px}
+
+/* CTA */
+.cta{display:block;width:calc(100% - 48px);margin:24px auto 0;padding:14px;background:#f97316;color:#000;border:none;border-radius:12px;font-size:15px;font-weight:700;text-align:center;text-decoration:none;font-family:'Noto Sans KR',sans-serif}
+.cta:active{background:#ea580c}
+
+/* Perks */
+.perks{margin:20px 24px;background:rgba(34,197,94,0.04);border:1px solid rgba(34,197,94,0.1);border-radius:12px;padding:16px}
+.perks-title{font-size:13px;font-weight:600;color:#22c55e;margin-bottom:8px}
+.perks-item{display:flex;align-items:center;gap:8px;font-size:12px;color:#888;margin-bottom:3px}
+
+/* Footer */
+.footer{margin-top:24px;padding:20px;text-align:center;font-size:11px;color:#444;line-height:1.6}
+.footer a{color:#666;text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-logo">CAMERA VILLAGE</div>
+  <div class="hero-title">빌리지 할인이<br><span>더 커졌습니다</span></div>
+  <div class="hero-sub">전부 중복 적용 · 보증금 없음 · 선결제 없음</div>
+  <div class="hero-badges">
+    <span class="badge badge-orange">학생 30%</span>
+    <span class="badge badge-orange">사업자 20%</span>
+    <span class="badge badge-blue">3/10 쿠폰</span>
+    <span class="badge badge-green">소개 리워드</span>
+    <span class="badge badge-purple">히든 할인</span>
+  </div>
+</div>
+
+<!-- 01 학생/사업자 -->
+<div class="section">
+  <div class="section-num num-orange">01</div>
+  <div class="section-title">기본 할인</div>
+  <div class="section-sub">학생 또는 사업자, 택1</div>
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="stat-label">학생</div>
+      <div class="stat-value" style="color:#f97316">30%</div>
+      <div class="stat-note">학생증 제시</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">개인사업자 / 프리랜서</div>
+      <div class="stat-value" style="color:#f97316">20%</div>
+      <div class="stat-note">사업자등록증 또는 증빙</div>
+    </div>
+  </div>
+  <div class="info-box">
+    <div class="info-item"><span class="check">✓</span> 전 장비 적용 (시네마 장비 포함)</div>
+    <div class="info-item"><span class="check">✓</span> 장기·쿠폰·소개 할인과 중복 가능</div>
+  </div>
+</div>
+
+<!-- 02 장기 할인 -->
+<div class="section">
+  <div class="section-num num-orange">02</div>
+  <div class="section-title">장기 대여 할인</div>
+  <div class="section-sub">기본 할인과 중복 적용</div>
+  <table class="lt-table">
+    <tr><td>2회차</td><td>10%</td></tr>
+    <tr><td>3~5회차</td><td>20%</td></tr>
+    <tr><td>6~9회차</td><td>35%</td></tr>
+    <tr><td>10~15회차</td><td>40%</td></tr>
+    <tr><td>15~19회차</td><td>45%</td></tr>
+    <tr><td>20회차~</td><td>50%</td></tr>
+  </table>
+</div>
+
+<!-- 03 쿠폰 -->
+<div class="section">
+  <div class="section-num num-blue">03</div>
+  <div class="section-title">3/10 쿠폰</div>
+  <div class="section-sub">이용할수록 추가 할인 자동 발급</div>
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="stat-label">3회 이용</div>
+      <div class="stat-value" style="color:#3b82f6">5%</div>
+      <div class="stat-note">쿠폰 자동 발급</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">10회 이용</div>
+      <div class="stat-value" style="color:#3b82f6">10%</div>
+      <div class="stat-note">쿠폰 자동 발급</div>
+    </div>
+  </div>
+  <div class="accent-box accent-blue">
+    <div class="accent-title">기본 할인과 중복 적용</div>
+    <div class="accent-desc">유효기간 2개월 · 학생/사업자/장기 할인 위에 추가로 적용</div>
+  </div>
+</div>
+
+<!-- 04 소개 -->
+<div class="section">
+  <div class="section-num num-green">04</div>
+  <div class="section-title">소개 리워드</div>
+  <div class="section-sub">소개하면 둘 다 할인</div>
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="stat-label">소개한 사람</div>
+      <div class="stat-value" style="color:#22c55e">+5%</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">소개받은 사람</div>
+      <div class="stat-value" style="color:#22c55e">+5%</div>
+    </div>
+  </div>
+  <div class="accent-box accent-green">
+    <div class="accent-title">기본 할인과 중복 적용</div>
+    <div class="accent-desc">횟수 제한 없음 · 예약 시 소개자 이름만 알려주세요</div>
+  </div>
+</div>
+
+<!-- 05 히든 할인 -->
+<div class="section">
+  <div class="section-num num-purple">05 — BONUS</div>
+  <div class="section-title">히든 할인</div>
+  <div class="section-sub">위 할인이 전부가 아닙니다</div>
+  <div class="stat-row">
+    <div class="stat-card">
+      <div class="stat-label">단골 고객</div>
+      <div class="stat-value" style="color:#a855f7;font-size:24px">추가 할인</div>
+      <div class="stat-note">이용 내역에 따라</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">제휴업체</div>
+      <div class="stat-value" style="color:#a855f7;font-size:24px">별도 협의</div>
+      <div class="stat-note">정기 이용 시</div>
+    </div>
+  </div>
+  <div class="accent-box accent-purple">
+    <div class="accent-title">별도 문의</div>
+    <div class="accent-desc">카카오톡으로 문의하시면 상황에 맞게 안내드려요</div>
+  </div>
+</div>
+
+<!-- 할인 중복 예시 -->
+<div class="section">
+  <div class="section-num num-orange">EXAMPLE</div>
+  <div class="section-title">할인은 중복됩니다</div>
+  <div class="section-sub">학생 + 장기 + 쿠폰 + 소개, 전부 동시 적용</div>
+
+  <div class="calc-example">
+    <div class="calc-label">FX3 · 학생 + 10회 쿠폰</div>
+    <div class="calc-flow">
+      <span class="calc-original">₩50,000</span>
+      <span style="color:#555">×</span>
+      <span class="calc-tag tag-orange">학생 30%</span>
+      <span style="color:#555">×</span>
+      <span class="calc-tag tag-blue">10회 쿠폰</span>
+    </div>
+    <div class="calc-result">₩31,500 <span class="calc-pct">-37%</span></div>
+  </div>
+
+  <div class="calc-example">
+    <div class="calc-label">FX3 · 학생 + 6~9회차 장기 + 소개</div>
+    <div class="calc-flow">
+      <span class="calc-original">₩50,000</span>
+      <span style="color:#555">×</span>
+      <span class="calc-tag tag-orange">학생</span>
+      <span style="color:#555">×</span>
+      <span class="calc-tag tag-orange">장기 35%</span>
+      <span style="color:#555">×</span>
+      <span class="calc-tag tag-green">소개 5%</span>
+    </div>
+    <div class="calc-result">₩21,613 <span class="calc-pct">-56.8%</span></div>
+  </div>
+</div>
+
+<!-- 할인 계산기 -->
+<div class="calc-section" style="border-top:1px solid #1a1a24">
+  <div class="section-num num-orange">CALCULATOR</div>
+  <div class="section-title" style="margin-bottom:4px">내 할인 직접 계산</div>
+  <div class="section-sub">장비 선택 → 할인 적용 → 최종 가격 확인</div>
+
+  <div class="s-label">장비 카테고리</div>
+  <div class="cat-tabs" id="catTabs"></div>
+
+  <div class="s-label">장비 선택</div>
+  <div class="select-wrap">
+    <select class="custom-select" id="equipSelect"><option value="">카테고리를 먼저 선택하세요</option></select>
+    <div class="select-arrow">▼</div>
+  </div>
+
+  <div class="s-label">기본 할인 (택1)</div>
+  <div class="chip-group" id="baseChips"></div>
+
+  <div class="s-label">장기 대여 (택1)</div>
+  <div class="chip-group" id="ltChips"></div>
+
+  <div class="s-label">추가 할인 (중복 가능)</div>
+  <div class="chip-group" id="extraChips"></div>
+
+  <div class="result-card" id="resultCard">
+    <div class="result-empty">장비와 할인을 선택해보세요</div>
+  </div>
+</div>
+
+<!-- Perks -->
+<div class="perks">
+  <div class="perks-title">기본 포함 (무료)</div>
+  <div class="perks-item"><span class="check">✓</span> 배터리 3~4개 (₩20,000~40,000 상당)</div>
+  <div class="perks-item"><span class="check">✓</span> SD카드 2~3장 (₩15,000~30,000 상당)</div>
+  <div class="perks-item"><span class="check">✓</span> 보증금 없음 · 선결제 없음</div>
+  <div class="perks-item"><span class="check">✓</span> 카카오톡 간편 예약</div>
+  <div class="perks-item"><span class="check">✓</span> 홍대입구역 도보 3분</div>
+</div>
+
+<a href="https://pf.kakao.com/_xhPMls" target="_blank" class="cta">카카오톡 '카메라빌리지'로 예약 💬</a>
+
+<div class="footer">
+  VILLAGE. · 서울 마포구 동교로 23길 32 엠페로빌딩 2F<br>
+  <a href="https://village6k.co.kr" target="_blank">village6k.co.kr</a> · 홍대입구역 도보 3분
+</div>
+
+<script>
+const ED={
+'카메라 풀세트':[{n:'픽시스 6K 풀세트 (PL 마운트)',p:150000},{n:'소니 BURANO 풀세트',p:250000},{n:'소니 BURANO 베이직 세트',p:200000},{n:'소니 FX9 풀세트',p:100000},{n:'소니 FX6 풀세트',p:130000},{n:'소니 FX3 풀세트',p:90000},{n:'소니 A7S3 풀세트',p:80000},{n:'RED 코모도 풀세트',p:100000},{n:'BMPCC 6K Pro 풀세트',p:60000},{n:'BMPCC 6K 풀세트',p:50000}],
+'카메라':[{n:'소니 FX3 바디세트',p:40000},{n:'소니 FX3 + 28-135',p:65000},{n:'소니 FX3 + 24-70 GM',p:60000},{n:'소니 FX6 바디세트',p:60000},{n:'소니 FX6 + 28-135',p:85000},{n:'소니 FX9 바디세트',p:60000},{n:'소니 FX9 + 28-135',p:85000},{n:'소니 A7S3 바디세트',p:30000},{n:'소니 A7S3 + 28-135',p:55000},{n:'소니 A7S3 + 24-70 GM',p:50000},{n:'캐논 R6 MARK II',p:30000},{n:'캐논 R6 II + RF 100-500',p:50000},{n:'캐논 5D MARK IV',p:30000},{n:'오막포+백사투',p:40000},{n:'소니 Z-90 캠코더(4K)',p:40000},{n:'소니 AX-700 캠코더(4K)',p:30000},{n:'소니 AX43A 캠코더(4K)',p:30000},{n:'인스타360 X5',p:30000},{n:'고프로 히어로11',p:20000},{n:'고프로 히어로10',p:20000},{n:'오즈모 포켓3',p:20000}],
+'렌즈/필터':[{n:'소니 GM 렌즈 세트(단품가능)',p:56000},{n:'소니 GM 단렌즈 세트(5본)',p:90000},{n:'소니 24-70 GM II',p:25000},{n:'소니 70-200 GM II',p:25000},{n:'소니 100-400 GM',p:30000},{n:'소니 FE 28-135',p:25000},{n:'소니 FE 24-105',p:20000},{n:'소니 90mm 매크로',p:15000},{n:'쿠크 COOKE SP3 세트',p:110000},{n:'니시 아테나 프라임 세트',p:100000},{n:'DZOFILM CATTA ACE 3세트',p:80000},{n:'시그마 FF Prime 세트',p:80000},{n:'삼양 XEEN 세트',p:50000},{n:'삼양 XEEN CF 세트',p:80000},{n:'삼양 VDSLR MK2 세트',p:50000},{n:'삼양 100mm 매크로',p:10000},{n:'시그마 아트 줌렌즈 세트',p:40000},{n:'라오와 24mm Probe',p:30000},{n:'라오와 12mm T2.9 Cine',p:35000},{n:'아이릭스 150mm 매크로',p:20000},{n:'캐논 RF 100-500',p:30000},{n:'캐논 100-400mm II',p:30000},{n:'메타본즈(PL→E)',p:10000},{n:'시그마 MC-11(EF→E)',p:5000},{n:'틸타 MB-T12 매트박스',p:20000},{n:'틸타 MB-T16 미라지',p:15000},{n:'매트박스 미니',p:7000},{n:'NiSi PL 필터(4x5.65)',p:7000},{n:'NiSi True-Color PL 필터',p:7000},{n:'티펜 Black Pro-Mist',p:7000},{n:'슈나이더 Hollywood BM',p:7000},{n:'H&Y REVORING ND+CPL',p:7000},{n:'IR ND 필터',p:7000},{n:'H&Y 가변 어댑터링',p:5000},{n:'어퓨쳐 F10 프레넬(600용)',p:10000},{n:'어퓨쳐 2X 프레넬(300용)',p:5000}],
+'조명':[{n:'난룩스 Evoke 1200B',p:50000},{n:'어퓨쳐 600X 프로 세트',p:30000},{n:'어퓨쳐 600C 프로(RGBWW)',p:40000},{n:'어퓨쳐 600D',p:30000},{n:'어퓨쳐 300X 세트(2세트5만)',p:25000},{n:'어퓨쳐 300C 세트(RGBWW)',p:20000},{n:'어퓨쳐 노바 P300C(2세트6만)',p:30000},{n:'어퓨쳐 스톰 80C',p:20000},{n:'어퓨쳐 LS 60X',p:20000},{n:'아마란 F22C',p:35000},{n:'아마란 F21C',p:20000},{n:'아마란 PT4C 4KIT',p:60000},{n:'아마란 PT4C 2KIT',p:30000},{n:'파보튜브II 30XR 2KIT',p:35000},{n:'파보튜브II 30X 4KIT',p:60000},{n:'파보튜브II 30X 2KIT',p:30000},{n:'파보튜브II 6C',p:5000},{n:'어퓨쳐 B7C 8KIT',p:40000},{n:'어퓨쳐 B7C 2KIT',p:20000},{n:'어퓨쳐 MC4 트래블 KIT',p:20000},{n:'어퓨쳐 Spotlight 마운트',p:10000},{n:'어퓨쳐 파워스테이션',p:10000},{n:'스피드라이트 430EX',p:15000}],
+'모니터/무선':[{n:'홀리랜드 솔리드컴 C1 PRO 6S',p:70000},{n:'홀리랜드 솔리드컴 C1 PRO 4S',p:50000},{n:'무선세트(17인치)',p:50000},{n:'무선세트(7인치)',p:50000},{n:'TVLogic LVM-180A',p:30000},{n:'TVLogic F-7HS(7인치)',p:30000},{n:'TVLogic LVM-170A',p:25000},{n:'TVLogic VFM-055A',p:20000},{n:'17인치 모니터(구형)',p:25000},{n:'스몰HD INDIE7',p:20000},{n:'시네로이드 CFL-800 세트',p:20000},{n:'5인치 프리뷰 모니터',p:20000},{n:'7인치 프리뷰 모니터',p:20000},{n:'아이패드(무선 모니터링)',p:10000},{n:'홀리랜드 파이로 S',p:30000},{n:'홀리랜드 파이로 7',p:20000},{n:'홀리랜드 마스 4K',p:25000},{n:'홀리랜드 마스 400S 프로',p:20000},{n:'홀리랜드 마스 400S',p:20000},{n:'홀리랜드 마스 M1',p:15000},{n:'바식스 아톰 500',p:20000},{n:'테라덱 볼트 1000XT',p:30000},{n:'테라덱 볼트 500LT',p:25000},{n:'DJI SDR Transmission',p:20000},{n:'틸타 뉴클리어스-M',p:20000},{n:'틸타 뉴클리어스 Nano II',p:20000},{n:'틸타 뉴클리어스-N',p:10000},{n:'PDMOVIE LIVE AIR 3',p:20000},{n:'멀티뷰 4HD',p:15000}],
+'짐벌/서포트':[{n:'틸타 시네 슬라이더',p:50000},{n:'MOVMAX RAZOR ARM',p:40000},{n:'로닌 RS4 프로',p:30000},{n:'로닌 RS3 프로',p:30000},{n:'로닌 RS2 프로',p:30000},{n:'지윤 크레인 3S',p:30000},{n:'핫도그 슬라이더',p:30000},{n:'시네 카트',p:20000},{n:'모션나인 카트 M1',p:20000},{n:'숄더리그',p:10000},{n:'모션나인 C-BED',p:5000},{n:'CINE SADDLE',p:5000}],
+'오디오':[{n:'JBL 파티박스 320+마이크',p:30000},{n:'인터컴 5세트',p:30000},{n:'줌 F6',p:20000},{n:'줌 H8(핸디 레코더)',p:20000},{n:'모토로라 무전기 4세트',p:20000},{n:'젠하이져 MKH-416P',p:15000},{n:'소니 UWP-D21',p:10000},{n:'DJI 무선마이크',p:10000},{n:'소니 XLR-K3M',p:10000},{n:'로데 비디오마이크 프로+',p:10000},{n:'소니 ECM-673(붐마이크)',p:10000},{n:'TAKSTAR 콘덴서 마이크',p:10000},{n:'오디오테크니카 ATH-M50X',p:10000},{n:'붐마이크 거치대',p:5000}],
+'기타':[{n:'KSH17 프롬프터',p:60000},{n:'에코플로우 델타2 맥스',p:50000},{n:'에코플로우 델타2',p:50000},{n:'B&W 스피커(2조)',p:50000},{n:'아템 미니 익스트림 ISO',p:30000},{n:'툴콘 가스히터',p:30000},{n:'헤이저 머신',p:30000},{n:'포그 머신',p:20000},{n:'촬영용 턴테이블',p:20000},{n:'V마운트 배터리 3개',p:10000},{n:'하만카돈 스피커',p:10000},{n:'스크림 세트(고보)',p:10000},{n:'클라우드 백업(1캠)',p:10000},{n:'강풍기',p:5000},{n:'슬레이트',p:5000},{n:'애플박스 세트',p:5000},{n:'C스탠드',p:5000},{n:'C-BOOM',p:5000},{n:'콤보 스탠드',p:5000},{n:'탑 클램프',p:5000},{n:'더블 헤더',p:5000},{n:'L 플레이트',p:5000},{n:'오토폴',p:5000},{n:'사다리',p:5000},{n:'석자/넉자 플로피',p:5000},{n:'석자/넉자 디퓨젼',p:5000},{n:'반사판',p:5000},{n:'맨프로토 매직암',p:5000},{n:'슈퍼클램프',p:3000},{n:'매슬리니',p:3000}]
+}
+const BD=[{n:'학생 30%',r:.3},{n:'개인사업자/프리랜서 20%',r:.2},{n:'없음',r:0}];
+const LT=[{n:'없음',r:0},{n:'2회차 10%',r:.1},{n:'3~5회차 20%',r:.2},{n:'6~9회차 35%',r:.35},{n:'10~15회차 40%',r:.4},{n:'15~19회차 45%',r:.45},{n:'20회차~ 50%',r:.5}];
+const EX=[{n:'3회 쿠폰 5%',r:.05},{n:'10회 쿠폰 10%',r:.1},{n:'소개 리워드 5%',r:.05}];
+
+let selCat=null,selEq=null,selBase=null,selLt=null,selEx=new Set();
+
+function renderCats(){
+  const el=document.getElementById('catTabs');el.innerHTML='';
+  Object.keys(ED).forEach(c=>{const b=document.createElement('button');b.className='cat-tab'+(selCat===c?' active':'');b.textContent=c;b.onclick=()=>{selCat=c;selEq=null;renderCats();renderEq();upd()};el.appendChild(b)})
+}
+function renderEq(){
+  const s=document.getElementById('equipSelect');s.innerHTML='';
+  if(!selCat){s.innerHTML='<option value="">카테고리를 먼저 선택하세요</option>';return}
+  s.innerHTML='<option value="">장비를 선택하세요</option>';
+  ED[selCat].forEach((e,i)=>{const o=document.createElement('option');o.value=i;o.textContent=e.n+'  ·  ₩'+e.p.toLocaleString()+'/일';if(selEq===i)o.selected=true;s.appendChild(o)})
+}
+document.getElementById('equipSelect').addEventListener('change',function(){selEq=this.value!==''?parseInt(this.value):null;upd()});
+
+function renderBase(){
+  const el=document.getElementById('baseChips');el.innerHTML='';
+  BD.forEach((d,i)=>{const b=document.createElement('button');b.className='chip exclusive'+(selBase===i?' active':'');b.textContent=d.n;b.onclick=()=>{selBase=selBase===i?null:i;renderBase();upd()};el.appendChild(b)})
+}
+function renderLt(){
+  const el=document.getElementById('ltChips');el.innerHTML='';
+  LT.forEach((d,i)=>{const b=document.createElement('button');b.className='chip exclusive'+(selLt===i?' active':'');b.textContent=d.n;b.onclick=()=>{selLt=selLt===i?null:i;renderLt();upd()};el.appendChild(b)})
+}
+function renderEx(){
+  const el=document.getElementById('extraChips');el.innerHTML='';
+  EX.forEach((d,i)=>{const b=document.createElement('button');b.className='chip'+(selEx.has(i)?' active':'');b.textContent=d.n;b.onclick=()=>{selEx.has(i)?selEx.delete(i):selEx.add(i);renderEx();upd()};el.appendChild(b)})
+}
+
+function upd(){
+  const c=document.getElementById('resultCard');
+  if(selEq===null||!selCat){c.innerHTML='<div class="result-empty">장비와 할인을 선택해보세요</div>';return}
+  const eq=ED[selCat][selEq],p=eq.p;let f=p,names=[];
+  if(selBase!==null&&BD[selBase].r>0){f*=(1-BD[selBase].r);names.push(BD[selBase].n)}
+  if(selLt!==null&&LT[selLt].r>0){f*=(1-LT[selLt].r);names.push(LT[selLt].n)}
+  selEx.forEach(i=>{f*=(1-EX[i].r);names.push(EX[i].n)});
+  f=Math.round(f);const sv=p-f,pct=((1-f/p)*100).toFixed(1);
+  let h='<div class="result-equip">'+eq.n+'</div>';
+  if(sv>0){h+='<div class="result-original">₩'+p.toLocaleString()+'</div><div class="result-final">₩'+f.toLocaleString()+'</div><div class="result-discount">-'+pct+'%</div><div class="result-savings"><strong>₩'+sv.toLocaleString()+'</strong> 절약'+(names.length?'<br>'+names.join(' + '):'')+'</div>'}
+  else{h+='<div class="result-final" style="color:#e8e6e3">₩'+p.toLocaleString()+'</div><div style="font-size:12px;color:#666;margin-top:4px">정가 (할인을 선택해보세요)</div>'}
+  c.innerHTML=h
+}
+
+renderCats();renderEq();renderBase();renderLt();renderEx();
+</script>
+</body>
+</html>
